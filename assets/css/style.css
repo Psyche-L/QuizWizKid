@@ -11,7 +11,8 @@ html, body{
 
 body{
     font-family: 'Montserrat', serif;
-
+    background-image: url('assets/css/images/IMG_7692.jpg');
+    background-color: #ccccc;
 }
 
 main{

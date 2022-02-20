@@ -1,5 +1,8 @@
 //this would be the object shape for storing the questions  
  //you can change the questions to your own taste or even add more questions..
+
+ window.confirm('You will be timed, are you ready?');
+
  const questions = [
     {
         question: "What are libraries?",
