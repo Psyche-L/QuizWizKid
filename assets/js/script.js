@@ -1,5 +1,17 @@
 //this would be the object shape for storing the questions  
  //you can change the questions to your own taste or even add more questions..
+ var myTimer = 15;
+var interval = setInterval(function(){
+  document.getElementById('my-timer').innerHTML=myTimer;
+  myTimer--;
+  if (myTimer === 0){
+    clearInterval(interval);
+    document.getElementById('my-timer').innerHTML='Done';
+    // or...
+    alert("You're out of time!");
+    
+  }
+}, 1000);
 
  window.confirm('You will be timed, are you ready?');
 
@@ -157,7 +169,7 @@ let shuffledQuestions = [] //empty array to hold shuffled selected questions out
 function handleQuestions() { 
     //function to shuffle and push 10 questions to shuffledQuestions array
 //app would be dealing with 10questions per session
-    while (shuffledQuestions.length <= 9) {
+    while (shuffledQuestions.length <= 4) {
         const random = questions[Math.floor(Math.random() * questions.length)]
         if (!shuffledQuestions.includes(random)) {
             shuffledQuestions.push(random)
@@ -183,6 +195,7 @@ function NextQuestion(index) {
     document.getElementById("option-two-label").innerHTML = currentQuestion.optionB;
     document.getElementById("option-three-label").innerHTML = currentQuestion.optionC;
     document.getElementById("option-four-label").innerHTML = currentQuestion.optionD;
+    
 
 }
 
@@ -239,7 +252,7 @@ function handleNextQuestion() {
     unCheckRadioButtons()
     //delays next question displaying for a second just for some effects so questions don't rush in on player
     setTimeout(() => {
-        if (indexNumber <= 9) {
+        if (indexNumber <= 4) {
 //displays next question as long as index number isn't greater than 9, remember index number starts from 0, so index 9 is question 10
             NextQuestion(indexNumber)
         }
@@ -272,15 +285,15 @@ function handleEndGame() {
     let remarkColor = null
 
     // condition check for player remark and remark color
-    if (playerScore <= 3) {
+    if (playerScore <= 2) {
         remark = "Keep Practicing."
         remarkColor = "red"
     }
-    else if (playerScore >= 4 && playerScore < 7) {
+    else if (playerScore >= 3 && playerScore < 4) {
         remark = "You can do better."
         remarkColor = "orange"
     }
-    else if (playerScore >= 7) {
+    else if (playerScore >= 5) {
         remark = "Excellent, Keep the good work going."
         remarkColor = "green"
     }
