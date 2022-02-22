@@ -8,8 +8,7 @@ var interval = setInterval(function(){
     clearInterval(interval);
     document.getElementById('my-timer').innerHTML='Done';
     // or...
-    alert("You're out of time!");
-    
+    handleEndGame();
   }
 }, 1000);
 
@@ -163,16 +162,20 @@ var interval = setInterval(function(){
 
 ]
 
+//empty array to hold shuffled question from question pool.
 
-let shuffledQuestions = [] //empty array to hold shuffled selected questions out of all available questions
+let shuffledQuestions = [] 
 
+//Function handles randomizing 5 
 function handleQuestions() { 
-    //function to shuffle and push 10 questions to shuffledQuestions array
-//app would be dealing with 10questions per session
+    
+    
+    // App has 5 questions per session
     while (shuffledQuestions.length <= 4) {
-        const random = questions[Math.floor(Math.random() * questions.length)]
+    const random = questions[Math.floor(Math.random() * questions.length)]
+        
         if (!shuffledQuestions.includes(random)) {
-            shuffledQuestions.push(random)
+        shuffledQuestions.push(random)
         }
     }
 }
@@ -253,11 +256,11 @@ function handleNextQuestion() {
     //delays next question displaying for a second just for some effects so questions don't rush in on player
     setTimeout(() => {
         if (indexNumber <= 4) {
-//displays next question as long as index number isn't greater than 9, remember index number starts from 0, so index 9 is question 10
+//displays next question as long as index number isn't greater than 4, remember index number starts from 0, so index 4 is question 5
             NextQuestion(indexNumber)
         }
         else {
-            handleEndGame()//ends game if index number greater than 9 meaning we're already at the 10th question
+            handleEndGame()//ends game if index number greater than 4 meaning we're already at the 4th question
         }
         resetOptionBackground()
     }, 1000);
@@ -285,16 +288,20 @@ function handleEndGame() {
     let remarkColor = null
 
     // condition check for player remark and remark color
-    if (playerScore <= 2) {
-        remark = "Keep Practicing."
+    if (playerScore === 0) {
+        remark = "Try again loser"
+        remarkColor = "red"
+    }
+    else if (playerScore <= 2) {
+        remark = "Get back to work 🤡"
         remarkColor = "red"
     }
     else if (playerScore >= 3 && playerScore < 4) {
-        remark = "You can do better."
+        remark = "Not good but not bad ether 👀"
         remarkColor = "orange"
     }
     else if (playerScore >= 5) {
-        remark = "Excellent, Keep the good work going."
+        remark = "Same some for the rest of us pal.😎"
         remarkColor = "green"
     }
     const playerGrade = (playerScore / 10) * 100
