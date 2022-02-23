@@ -13,7 +13,8 @@ You can enter you initials to save your high score.
 ## Technologies used
 HTML CSS JavaScript
 ## Known Bugs
-The score and inetials dont save, click the link to the issues page for more details.
+The score and initials don't save, click the link to the issues page for more details.
+The timer does'nt reset after completion
 https://github.com/Psyche-L/QuizWizKid/issues
 
 ## Deployment
