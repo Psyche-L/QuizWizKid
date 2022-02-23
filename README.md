@@ -31,3 +31,4 @@ Email: sptheseve@gmail.com
 LinkIn: https://www.linkedin.com/in/psyche-laveau-280b78229/
 
 ## Screen Shot
+![](assets/css/images/scsh.jpeg?raw=true)
