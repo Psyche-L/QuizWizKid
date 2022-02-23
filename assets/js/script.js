@@ -1,6 +1,6 @@
 //this would be the object shape for storing the questions  
  //you can change the questions to your own taste or even add more questions..
- var myTimer = 15;
+ var myTimer = 90;
 var interval = setInterval(function(){
   document.getElementById('my-timer').innerHTML=myTimer;
   myTimer--;
@@ -9,10 +9,11 @@ var interval = setInterval(function(){
     document.getElementById('my-timer').innerHTML='Done';
     // or...
     handleEndGame();
+    
   }
 }, 1000);
 
- window.confirm('You will be timed, are you ready?');
+ window.alert('You will be timed, click ok to start.');
 
  const questions = [
     {
@@ -186,6 +187,7 @@ let playerScore = 0  //holds the player score
 let wrongAttempt = 0 //amount of wrong answers picked by player
 let indexNumber = 0 //will be used in displaying next question
 
+
 // function for displaying next question in the array to dom
 //also handles displaying players and quiz information to dom
 function NextQuestion(index) {
@@ -230,19 +232,20 @@ function checkForAnswer() {
             //set to delay question number till when next question loads
             setTimeout(() => {
                 questionNumber++
-            }, 1000)
+            }, 400)
         }
 
         else if (option.checked && option.value !== currentQuestionAnswer) {
             const wrongLabelId = option.labels[0].id
             document.getElementById(wrongLabelId).style.backgroundColor = "red"
             document.getElementById(correctOption).style.backgroundColor = "green"
+            myTimer = myTimer - 5
             wrongAttempt++ //adds 1 to wrong attempts 
             indexNumber++
             //set to delay question number till when next question loads
             setTimeout(() => {
                 questionNumber++
-            }, 1000)
+            }, 400)
         }
     })
 }
@@ -313,11 +316,13 @@ function handleEndGame() {
     document.getElementById('wrong-answers').innerHTML = wrongAttempt
     document.getElementById('right-answers').innerHTML = playerScore
     document.getElementById('score-modal').style.display = "flex"
-
+    //document.getElementById("enter-initials").innerHTML = initials
+    //localStorage.getItem("initials")
 }
-
+var initials 
 //closes score modal, resets game and reshuffles questions
 function closeScoreModal() {
+    console.log(document.getElementById("enter-initials").value)
     questionNumber = 1
     playerScore = 0
     wrongAttempt = 0
@@ -325,6 +330,7 @@ function closeScoreModal() {
     shuffledQuestions = []
     NextQuestion(indexNumber)
     document.getElementById('score-modal').style.display = "none"
+    //location.reload()
 }
 
 //function to close warning modal
